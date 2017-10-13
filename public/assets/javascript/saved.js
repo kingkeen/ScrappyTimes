@@ -9,9 +9,9 @@ $(document).ready(function() {
   $(document).on("click", ".btn.note-delete", handleNoteDelete);
 
   // initPage kicks everything off when the page is loaded
-  initPage();
+  initializePage();
 
-  function initPage() {
+  function initializePage() {
     // Empty the article container, run an AJAX request for any saved headlines
     articleContainer.empty();
     $.get("/api/headlines?saved=true").then(function(data) {
@@ -130,9 +130,9 @@ $(document).ready(function() {
       method: "DELETE",
       url: "/api/headlines/" + articleToDelete._id
     }).then(function(data) {
-      // If this works out, run initPage again which will rerender our list of saved articles
+      // If this works out, run initializePage again which will rerender our list of saved articles
       if (data.ok) {
-        initPage();
+        initializePage();
       }
     });
   }
